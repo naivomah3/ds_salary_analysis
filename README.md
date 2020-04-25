@@ -1,2 +1,2 @@
-# DS - Portfolio 1 
-Salary Analysis
+# Data Science - PF 1 
+Full stack analysis on job offers on Glassdoor
