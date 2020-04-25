@@ -1,2 +1,2 @@
-# Data Science - PF 1 
-Full stack analysis on job offers on Glassdoor
+# Data Science Portfolio
+This is a full stack analysis on job offers on [Glassdoor](https://www.glassdoor.co.in/index.htm)
