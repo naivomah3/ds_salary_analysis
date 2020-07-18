@@ -15,8 +15,7 @@ def get_jobs(keyword, location, num_jobs,   # URL params
              verbose,
              driver_path,
              timer):
-    
-    '''Gathers jobs as a dataframe, scraped from Glassdoor'''
+    '''Gathers jobs posting at Glassdoor as a dataframe'''
     
     #Initializing the webdriver
     options = webdriver.ChromeOptions()
@@ -34,7 +33,6 @@ def get_jobs(keyword, location, num_jobs,   # URL params
     
 
     while len(jobs) < num_jobs:  #If true, should be still looking for new jobs.
-
         #Let the page load. Change this number based on your internet speed.
         #Or, wait until the webpage is loaded, instead of hardcoding it.
         time.sleep(timer)
@@ -44,15 +42,13 @@ def get_jobs(keyword, location, num_jobs,   # URL params
             driver.find_element_by_class_name("selected").click()
         except ElementClickInterceptedException:
             pass
-
+        # Sleeping timer 
         time.sleep(timer)
-        
         try:
             driver.find_element_by_css_selector('[alt="Close"]').click()  #clicking to the X to close pop-up
         except NoSuchElementException:
             pass
 
-        
         #Going through each job in this page
         job_buttons = driver.find_elements_by_class_name("jl")  #jl for Job Listing. These are the buttons we're going to click.
         for job_button in job_buttons:  

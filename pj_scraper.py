@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Nom de l'entreprise ,
+# Nom de l'entreprise
 # Contact
 # Mail
 # Secteur d'activite
@@ -14,8 +14,7 @@ import pandas as pd
 from urllib.parse import urlparse
 
 
-
-def get_info(driver, secteur_activite, contact_list, verbose):
+def get_contact(driver, secteur_activite, contact_list, verbose):
     #Open all contacts & mail
     btn_adress = driver.find_elements_by_xpath('.//div[@class="ct-itemProducts ct-u-marginBottom20"]//div[@class="ct-main-content"]//div//div[@class="ct-product--description"]//div[@class="buttonShowCo"]')
 
@@ -67,17 +66,17 @@ def get_info(driver, secteur_activite, contact_list, verbose):
             print(f"Mail: {contact_mail}")
             print(f"Secteur d'Activite: {secteur_activite}")
             print(f"Adresse: {adress_loc}")
-            
-            
-        
-    
-    return contact_list
- 
-def get_contacts(verbose,
-                 driver_path,
-                 timer):
 
-    '''Gathers contact information from Yellow Page Africa - Specifically Magadascar'''
+    return contact_list
+
+
+
+
+def get_company_contacts(verbose,
+                         driver_path,
+                         timer):
+
+    '''Gathers companies contact from Yellow Page Africa - Specifically Magadascar'''
     
     #Initializing the webdriver
     options = webdriver.ChromeOptions()
@@ -107,7 +106,7 @@ def get_contacts(verbose,
         sect_act_link_list.append(
                 sect_act_name_list[i].find_element_by_xpath('./../..').get_attribute('href')
                 )
-        # Get the Secteur d'Activite name 
+        # Get the Secteur d'Activite name
         sect_act_name = sect_act_name_list[i]
 
     
@@ -135,9 +134,9 @@ def get_contacts(verbose,
                 if urlparse(page_link).scheme != '':
                     driver.get(page_link)
                     time.sleep(4)
-                    contact_list = get_info(driver, sect_act_name, contact_list, verbose)
+                    contact_list = get_contact(driver, sect_act_name, contact_list, verbose)
         else:
-            contact_list = get_info(driver, sect_act_name, contact_list, verbose)
+            contact_list = get_contact(driver, sect_act_name, contact_list, verbose)
         
         if j==5: 
             return contact_list
