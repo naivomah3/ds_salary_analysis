@@ -7,7 +7,7 @@ pd.set_option('display.max_columns', None)
 
 # =============================================================================
 driver_path = "/usr/local/bin/chromedriver"
-contact_list = pj.get_contacts(False, driver_path, 15)
+contact_list = pj.get_company_contacts(False, driver_path, 15)
 
 df_contact = pd.DataFrame(contact_list)
 

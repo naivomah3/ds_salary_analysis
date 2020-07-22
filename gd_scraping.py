@@ -6,7 +6,7 @@ Created on Sat Apr 18 00:01:04 2020
 @author: zero
 """
 
-import scraper as gs
+import gd_scraper as gs
 import pandas as pd
 
 
