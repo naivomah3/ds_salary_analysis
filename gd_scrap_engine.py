@@ -7,7 +7,18 @@ def get_jobs(keyword, location, num_jobs,   # URL params
              verbose,
              driver_path,
              timer):
-    '''Gathers jobs posting at Glassdoor as a dataframe'''
+    """scrape job offers related to Data Science 
+    Args:
+        keyword (string): Any keywords <here: data science>
+        location (string): Any location
+        num_jobs (int): Number of jobs wishing to get
+        driver_path (string): Absolute path of the Selenium Web-driver
+        timer (int): Time to sleep between clicks
+
+    Returns:
+        pandas.DataFrame: containing a table of offers 
+    """
+
     
     #Initializing the webdriver
     options = webdriver.ChromeOptions()
